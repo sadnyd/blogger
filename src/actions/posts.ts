@@ -1,6 +1,8 @@
 'use server'
-
 import { z } from 'zod'
+import { createClient } from '@/lib/supabase/server'
+import { logger } from '@/lib/logger'
+import { revalidatePath } from 'next/cache'
 
 const postSchema = z.object({
   title: z.string().min(1).max(200),
@@ -10,6 +12,11 @@ const postSchema = z.object({
 })
 
 export async function createPost(formData: FormData) {
+  // Extract and normalise fields from FormData
+  const title = (formData.get('title') as string) ?? ''
+  const slug = (formData.get('slug') as string) ?? ''
+  const content = (formData.get('content') as string) ?? ''
+  const status = (formData.get('status') as string) ?? 'draft'
   const supabase = await createClient()
   
   const { data: { user } } = await supabase.auth.getUser()
@@ -47,6 +54,11 @@ export async function createPost(formData: FormData) {
 }
 
 export async function updatePost(id: string, formData: FormData) {
+  // Extract fields from FormData
+  const title = (formData.get('title') as string) ?? ''
+  const slug = (formData.get('slug') as string) ?? ''
+  const content = (formData.get('content') as string) ?? ''
+  const status = (formData.get('status') as string) ?? 'draft'
   const supabase = await createClient()
   
   const { data: { user } } = await supabase.auth.getUser()
