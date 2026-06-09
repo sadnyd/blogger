@@ -32,8 +32,8 @@ export default async function Home() {
                 })}
               </div>
               <p className="text-gray-700 line-clamp-3">
-                {/* A naive summary extraction: strip markdown or just show first 150 chars */}
-                {post.content.slice(0, 150)}...
+                {/* Safe summary extraction */}
+                {post.content ? post.content.slice(0, 150) : ''}...
               </p>
               <div className="mt-4">
                 <Link href={`/post/${post.slug}`} className="text-blue-600 font-semibold hover:text-blue-800">
