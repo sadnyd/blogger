@@ -1,0 +1,13 @@
+- `[x]` Run Next.js create script
+- `[x]` Scaffold folder structure
+- `[x]` Create schema.sql with RLS policies and indexes
+- `[x]` Setup Supabase DB connection in `lib/db/`
+- `[x]` Setup Supabase Auth connection in `lib/auth/`
+- `[x]` Implement Server Actions (`actions/posts.ts`)
+- `[x]` Implement Route Protection
+- `[x]` Build Admin Dashboard
+- `[x]` Build Editor (MDX)
+- `[x]` Build Public Blog Listing and Details pages
+- `[ ]` Implement Custom Logger (`src/lib/logger.ts`)
+- `[x]` Replace `console` calls with logger
+- `[x]` Write and run stress test (`scripts/stress_test.ts`)
